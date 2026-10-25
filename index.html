@@ -289,7 +289,7 @@
   </style>
 </head>
 
-  <!-- ===== DIWALI OFFER BLOCK: START ===== -->
+<!-- ===== DIWALI OFFER BLOCK: START ===== -->
 <div id="diwali-offer">
   <style>
     #diwali-offer {
@@ -305,160 +305,182 @@
 
     #diwali-offer .diwali-card {
       position: relative;
+      isolation: isolate;
       overflow: hidden;
-      padding: 30px 22px;
+      padding: 34px 22px 25px;
       text-align: center;
       color: #fff6df;
-      border: 1px solid #e5c16b;
-      border-radius: 20px;
+      border: 1px solid #e7c66e;
+      border-radius: 22px;
       background:
-        radial-gradient(ellipse at 50% 0%, #7c4920 0%, transparent 62%),
-        linear-gradient(135deg, #210d0a, #4a1b12 55%, #210d0a);
-      box-shadow: 0 10px 28px rgba(55, 23, 10, 0.2);
+        radial-gradient(ellipse at 12% 15%, rgba(220, 157, 55, .24), transparent 35%),
+        radial-gradient(ellipse at 88% 85%, rgba(205, 153, 66, .2), transparent 35%),
+        linear-gradient(135deg, #170907, #542417 48%, #210c09);
+      box-shadow: 0 12px 32px rgba(55, 23, 10, .24);
+    }
+
+    #diwali-offer .diwali-card::before,
+    #diwali-offer .diwali-card::after {
+      position: absolute;
+      z-index: -1;
+      color: rgba(240, 200, 105, .15);
+      font-size: 150px;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    #diwali-offer .diwali-card::before {
+      content: "✺";
+      top: -30px;
+      left: -20px;
+    }
+
+    #diwali-offer .diwali-card::after {
+      content: "✺";
+      right: -20px;
+      bottom: -35px;
     }
 
     #diwali-offer .diwali-decoration {
-      color: #f4cf75;
-      font-size: 23px;
-      letter-spacing: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      color: #f5d68b;
+      font-size: 25px;
+      letter-spacing: 9px;
     }
 
     #diwali-offer .diwali-label {
       display: inline-block;
       padding: 7px 17px;
-      border: 1px solid #e5c16b;
+      border: 1px solid #e7c66e;
       border-radius: 30px;
-      color: #ffe5a1;
+      color: #ffe6a4;
+      background: rgba(255, 224, 151, .06);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 2px;
     }
 
     #diwali-offer h2 {
-      margin: 17px 0 8px;
+      margin: 18px 0 9px;
       color: #ffdf91;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(26px, 4.5vw, 42px);
+      font-size: clamp(27px, 4.5vw, 43px);
       line-height: 1.2;
+      text-shadow: 0 2px 16px rgba(255, 196, 77, .16);
     }
 
     #diwali-offer .offer-tagline {
-      margin: 0 auto 8px;
-      color: #fff4df;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    #diwali-offer .telugu-tagline {
+      max-width: 650px;
       margin: 0 auto 22px;
-      color: #f5dca8;
-      font-size: 16px;
+      color: #fff3dc;
+      font-size: 15px;
       line-height: 1.8;
     }
 
-    #diwali-offer .offer-highlight {
-      max-width: 760px;
-      margin: 0 auto 18px;
-      padding: 20px 15px;
-      border: 1px solid #e5c16b;
-      border-radius: 16px;
-      background: rgba(255, 232, 178, 0.08);
+    #diwali-offer .offer-box {
+      max-width: 690px;
+      margin: 0 auto;
+      padding: 25px 18px;
+      border: 1px solid #e8c76f;
+      border-radius: 18px;
+      background:
+        linear-gradient(145deg, rgba(255, 226, 160, .12), rgba(255, 248, 227, .035));
+      box-shadow:
+        inset 0 0 28px rgba(242, 195, 91, .06),
+        0 8px 24px rgba(0, 0, 0, .14);
     }
 
     #diwali-offer .offer-kicker {
-      margin: 0 0 10px;
-      color: #ffdf91;
-      font-size: 13px;
+      margin: 0 0 14px;
+      color: #f5d68b;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
     }
 
     #diwali-offer .offer-main {
       margin: 0;
-      color: #fff8e9;
-      font-size: clamp(19px, 3vw, 27px);
+      color: #fff8e8;
+      font-size: clamp(21px, 3.5vw, 31px);
       font-weight: 700;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     #diwali-offer .offer-main strong {
       color: #ffdf91;
     }
 
-    #diwali-offer .offer-sub {
-      margin: 10px 0 0;
-      color: #f5dca8;
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    #diwali-offer .coin-row {
+    #diwali-offer .offer-gift {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 20px auto;
+      align-items: center;
+      gap: 16px;
+      margin: 19px auto 12px;
     }
 
-    #diwali-offer .coin-box {
-      flex: 1 1 220px;
-      max-width: 320px;
-      padding: 17px 12px;
-      border: 1px solid rgba(229, 193, 107, 0.65);
-      border-radius: 13px;
-      background: rgba(255, 248, 230, 0.06);
+    #diwali-offer .coin {
+      display: flex;
+      width: 76px;
+      height: 76px;
+      flex: 0 0 76px;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #fff0b7;
+      border-radius: 50%;
+      color: #754313;
+      background:
+        radial-gradient(circle at 32% 25%, #fff8d9 0%, #f4d578 28%, #d8a53e 65%, #a66c1d 100%);
+      box-shadow:
+        0 0 0 4px rgba(232, 192, 96, .15),
+        0 5px 14px rgba(0, 0, 0, .24);
+      font-size: 26px;
+      font-weight: 800;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .4);
     }
 
-    #diwali-offer .coin-icon {
-      display: block;
-      margin-bottom: 7px;
-      font-size: 28px;
+    #diwali-offer .coin.silver {
+      border-color: #f5f5f5;
+      color: #55545a;
+      background:
+        radial-gradient(circle at 32% 25%, #fff 0%, #e9e9ed 34%, #b7b9c0 70%, #858791 100%);
     }
 
-    #diwali-offer .coin-box strong {
-      display: block;
-      margin-bottom: 5px;
+    #diwali-offer .gift-plus {
       color: #ffdf91;
-      font-size: 21px;
+      font-size: 24px;
+      font-weight: 700;
     }
 
-    #diwali-offer .coin-box span {
-      display: block;
-      color: #fff4df;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    #diwali-offer .offer-terms {
-      max-width: 760px;
-      margin: 16px auto;
-      color: #f5dfb8;
-      font-size: 12px;
+    #diwali-offer .offer-sub {
+      margin: 0;
+      color: #ffebc1;
+      font-size: 15px;
       line-height: 1.8;
     }
 
     #diwali-offer .offer-dates {
       display: inline-block;
-      margin: 5px auto 18px;
-      padding: 9px 16px;
+      margin: 23px auto 0;
+      padding: 10px 18px;
       border-radius: 30px;
       color: #30150b;
       background: linear-gradient(90deg, #e8c16b, #fff0bd, #e8c16b);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .15);
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
+      line-height: 1.6;
     }
 
     #diwali-offer .brand-footer {
-      margin-top: 16px;
-      padding-top: 15px;
-      border-top: 1px solid rgba(229, 193, 107, 0.45);
+      margin-top: 24px;
+      padding-top: 17px;
+      border-top: 1px solid rgba(229, 193, 107, .4);
       color: #ffdf91;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
-      letter-spacing: 0.5px;
+      letter-spacing: .5px;
       line-height: 1.8;
     }
 
@@ -478,90 +500,82 @@
       }
 
       #diwali-offer .diwali-card {
-        padding: 25px 13px;
-        border-radius: 15px;
+        padding: 25px 13px 21px;
+        border-radius: 16px;
       }
 
-      #diwali-offer .offer-highlight {
-        padding: 17px 10px;
+      #diwali-offer .offer-box {
+        padding: 22px 12px;
       }
 
-      #diwali-offer .offer-tagline,
-      #diwali-offer .telugu-tagline {
+      #diwali-offer .offer-gift {
+        gap: 12px;
+      }
+
+      #diwali-offer .coin {
+        width: 62px;
+        height: 62px;
+        flex-basis: 62px;
+        font-size: 22px;
+      }
+
+      #diwali-offer .offer-tagline {
         font-size: 14px;
       }
 
-      #diwali-offer .coin-box {
-        flex-basis: 100%;
+      #diwali-offer .offer-dates {
+        max-width: 100%;
+        font-size: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      #diwali-offer .coin {
+        transition: transform .25s ease;
+      }
+
+      #diwali-offer .coin:hover {
+        transform: translateY(-3px);
       }
     }
   </style>
 
   <section class="diwali-card" aria-label="Diwali gold and silver offer">
 
-    <div class="diwali-decoration">✦ ✧ 🪔 ✧ ✦</div>
+    <div class="diwali-decoration" aria-hidden="true">
+      ✦ ✧ 🪔 ✧ ✦
+    </div>
 
     <div class="diwali-label">DIWALI FESTIVE SPECIAL</div>
 
-    <h2>✨ Diwali Gold Offer ✨</h2>
+    <h2>Diwali Gold Offer</h2>
 
     <p class="offer-tagline">
       This Diwali, add more value to your jewellery purchase!
     </p>
 
-    <p class="telugu-tagline" lang="te">
-      ఈ దీపావళికి మీ బంగారు ఆభరణాల కొనుగోలుపై మరింత విలువను పొందండి!
-    </p>
-
-    <div class="offer-highlight">
-      <p class="offer-kicker">A Special Gift with Your Gold Purchase</p>
+    <div class="offer-box">
+      <p class="offer-kicker">A Special Festive Gift</p>
 
       <p class="offer-main">
-        Buy <strong>2 Grams of Gold</strong><br />
+        Buy <strong>4 Grams of Gold</strong><br />
         Get <strong>2 Free Silver Coins</strong>
       </p>
 
+      <div class="offer-gift" aria-label="Two silver coins, each weighing one gram">
+        <div class="coin" aria-hidden="true">Au</div>
+        <div class="gift-plus" aria-hidden="true">+</div>
+        <div class="coin silver" aria-hidden="true">Ag</div>
+      </div>
+
       <p class="offer-sub">
-        Each silver coin weighs 1 gram.
-      </p>
-
-      <p class="offer-sub" lang="te">
-        2 గ్రాముల బంగారం కొనుగోలుపై<br />
-        1 గ్రాము బరువున్న 2 వెండి నాణేలు ఉచితం!
+        2 Silver Coins · 1 Gram Each
       </p>
     </div>
 
-    <div class="coin-row">
-      <div class="coin-box">
-        <span class="coin-icon">🪙</span>
-        <strong>Buy 2 Grams</strong>
-        <span>Get 2 silver coins free</span>
-        <span>1 gram each · Total 2 grams silver</span>
-      </div>
-
-      <div class="coin-box">
-        <span class="coin-icon">🎁</span>
-        <strong>Buy 4 Grams</strong>
-        <span>Get 4 silver coins free</span>
-        <span>1 gram each · Total 4 grams silver</span>
-      </div>
-    </div>
-
-    <p class="offer-sub" lang="te">
-      4 గ్రాముల బంగారం కొనుగోలుపై<br />
-      1 గ్రాము బరువున్న 4 వెండి నాణేలు ఉచితం!
-    </p>
-
-    <!-- OFFER VALIDITY -->
     <div class="offer-dates">
       Offer Valid: 25 October 2026 – 9 November 2026
     </div>
-
-    <p class="offer-terms">
-      *Offer subject to applicable terms and conditions.
-      Please contact the store for eligibility, qualifying gold
-      weight, and offer validity details.
-    </p>
 
     <div class="brand-footer">
       Venkata Sai Gold &amp; Silvers
@@ -572,8 +586,7 @@
   </section>
 </div>
 <!-- ===== DIWALI OFFER BLOCK: END ===== -->
-
-
+  
 <body>
   <header class="header">
     <div class="brand">
