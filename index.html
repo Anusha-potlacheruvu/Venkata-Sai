@@ -83,12 +83,12 @@
         preview.append(img);
         preview.addEventListener('click', () => {
           largeImage.src = path;
-          largeImage.alt = img.alt;
+          largeImage.alt = `Item - ${images.indexOf(path) + 1}`;
           viewer.showModal();
         });
         const caption = document.createElement('div');
         caption.className = 'caption';
-        caption.textContent = path.split('/').pop();
+        caption.textContent = `Item - ${images.indexOf(path) + 1}`;
         card.append(preview, caption);
         gallery.append(card);
       });
