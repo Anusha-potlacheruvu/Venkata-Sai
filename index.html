@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17120c">
+  <title>Venkata Sai Gold & Silvers — Gallery</title>
+  <style>
+    :root { color-scheme: light; --gold:#b88a2b; --ink:#20180e; --paper:#fffaf0; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Arial, Helvetica, sans-serif; color:#211b14; background:#f6f2e9; }
+    header { padding:32px 16px 24px; text-align:center; color:#fff6dc; background:linear-gradient(135deg,#17120c,#3b2811); border-bottom:3px solid var(--gold); }
+    header h1 { margin:0; font-family: Georgia, serif; font-size:clamp(1.6rem,4vw,2.6rem); letter-spacing:.05em; }
+    header p { margin:10px 0 0; color:#e5c982; letter-spacing:.12em; font-size:.9rem; }
+    main { width:min(1200px,94%); margin:26px auto 40px; }
+    .toolbar { display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:18px; }
+    .toolbar p { margin:0; color:#5d5141; }
+    #search { width:min(100%,340px); padding:11px 13px; border:1px solid #d8c9aa; border-radius:10px; font-size:1rem; background:white; }
+    .gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:18px; }
+    .card { overflow:hidden; background:white; border:1px solid #e8dfce; border-radius:14px; box-shadow:0 4px 16px #2a1c0b0b; }
+    .preview { aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; background:#eee8dc; cursor:pointer; }
+    .preview img { width:100%; height:100%; object-fit:contain; }
+    .caption { padding:11px 12px; font-size:.9rem; overflow-wrap:anywhere; }
+    .empty { grid-column:1/-1; padding:28px; text-align:center; background:white; border-radius:12px; color:#5d5141; }
+    footer { text-align:center; padding:18px; color:#786b58; font-size:.85rem; }
+    dialog { max-width:min(95vw,1100px); max-height:92vh; padding:8px; border:0; border-radius:12px; background:#17120c; }
+    dialog::backdrop { background:#000c; }
+    dialog img { display:block; max-width:90vw; max-height:82vh; object-fit:contain; }
+    .close { display:block; margin:0 0 6px auto; padding:7px 12px; border:0; border-radius:6px; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>VENKATA SAI</h1>
+    <p>GOLD &amp; SILVERS</p>
+  </header>
+  <main>
+    <div class="toolbar">
+      <p id="count">Loading images…</p>
+      <input id="search" type="search" placeholder="Search image names…" aria-label="Search image names">
+    </div>
+    <section id="gallery" class="gallery" aria-live="polite"></section>
+  </main>
+  <footer>Venkata Sai Gold &amp; Silvers</footer>
+
+  <dialog id="viewer">
+    <button class="close" id="closeViewer" type="button">Close ✕</button>
+    <img id="largeImage" alt="">
+  </dialog>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    const count = document.getElementById('count');
+    const search = document.getElementById('search');
+    const viewer = document.getElementById('viewer');
+    const largeImage = document.getElementById('largeImage');
+    let images = [];
+
+    function render(filter = '') {
+      const term = filter.trim().toLowerCase();
+      const shown = images.filter(path => path.split('/').pop().toLowerCase().includes(term));
+      gallery.replaceChildren();
+      count.textContent = `${shown.length} image${shown.length === 1 ? '' : 's'}`;
+      if (!shown.length) {
+        const empty = document.createElement('div');
+        empty.className = 'empty';
+        empty.textContent = images.length
+          ? 'No images match your search.'
+          : 'No images found yet. Add image files to the assets folder and push your changes to GitHub.';
+        gallery.append(empty);
+        return;
+      }
+      shown.forEach(path => {
+        const card = document.createElement('article');
+        card.className = 'card';
+        const preview = document.createElement('div');
+        preview.className = 'preview';
+        const img = document.createElement('img');
+        img.src = path;
+        img.alt = path.split('/').pop();
+        img.loading = 'lazy';
+        img.addEventListener('error', () => card.remove());
+        preview.append(img);
+        preview.addEventListener('click', () => {
+          largeImage.src = path;
+          largeImage.alt = img.alt;
+          viewer.showModal();
+        });
+        const caption = document.createElement('div');
+        caption.className = 'caption';
+        caption.textContent = path.split('/').pop();
+        card.append(preview, caption);
+        gallery.append(card);
+      });
+    }
+
+    fetch('./images.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Could not load images.json');
+        return response.json();
+      })
+      .then(data => {
+        images = Array.isArray(data) ? data : [];
+        render();
+      })
+      .catch(() => {
+        images = [];
+        render();
+        count.textContent = 'Gallery could not load';
+      });
+
+    search.addEventListener('input', () => render(search.value));
+    document.getElementById('closeViewer').addEventListener('click', () => viewer.close());
+    viewer.addEventListener('click', event => {
+      if (event.target === viewer) viewer.close();
+    });
+  </script>
+</body>
+</html>
