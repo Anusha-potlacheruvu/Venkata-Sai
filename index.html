@@ -291,386 +291,442 @@
 
 
 <!-- ===== DIWALI OFFER BANNER: START ===== -->
-<div id="diwali-offer">
+<div id="vs-diwali">
 <style>
-#diwali-offer {
-  max-width:1200px;
-  margin:22px auto;
-  padding:0 12px;
-  font-family:inherit;
+#vs-diwali {
+  max-width: 1200px;
+  margin: 18px auto;
+  padding: 0 10px;
+  font-family: Georgia, "Times New Roman", serif;
 }
-#diwali-offer * { box-sizing:border-box; }
+#vs-diwali * { box-sizing: border-box; }
 
-#diwali-offer .banner {
-  position:relative;
-  isolation:isolate;
-  overflow:hidden;
-  padding:24px 16px 20px;
-  text-align:center;
-  color:#fff4d1;
-  border:2px solid #ffdc80;
-  border-radius:20px;
+#vs-diwali .poster {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 720px;
+  padding: 26px 18px 24px;
+  text-align: center;
+  color: #fff4d4;
+  border: 3px solid #edc66e;
+  border-radius: 18px;
   background:
-    radial-gradient(ellipse at 50% 55%,#8e235b 0%,transparent 55%),
-    linear-gradient(140deg,#18072f,#56103d 48%,#21082d);
-  box-shadow:0 8px 28px #480e3938;
+    linear-gradient(180deg,
+      rgba(7, 16, 52, .40) 0%,
+      rgba(46, 8, 45, .60) 37%,
+      rgba(39, 12, 26, .82) 100%),
+    url("https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1400&q=85")
+      center/cover no-repeat,
+    linear-gradient(160deg,#101b4a,#6d2045 55%,#c17b35);
+  box-shadow: 0 10px 35px rgba(32,8,32,.35);
 }
 
-/* Night sky and fireworks */
-#diwali-offer .sky {
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-  z-index:-1;
-  pointer-events:none;
-}
-#diwali-offer .burst {
-  position:absolute;
-  width:5px;
-  height:5px;
-  border-radius:50%;
-  color:#ffe58a;
-  background:currentColor;
-  box-shadow:
-    0 -36px currentColor, 0 36px currentColor,
-    36px 0 currentColor, -36px 0 currentColor,
-    25px 25px currentColor, -25px -25px currentColor,
-    25px -25px currentColor, -25px 25px currentColor,
-    0 -18px #ff70ba, 0 18px #ff70ba,
-    18px 0 #ff70ba, -18px 0 #ff70ba;
-  animation:burst 2.8s ease-out infinite;
-}
-#diwali-offer .b1 {left:13%;top:20%;animation-delay:0s;}
-#diwali-offer .b2 {left:84%;top:29%;color:#7ef9ff;animation-delay:1.2s;}
-#diwali-offer .b3 {left:69%;top:12%;color:#ff91c8;animation-delay:2s;}
-#diwali-offer .b4 {left:30%;top:37%;color:#ffb84e;animation-delay:.7s;}
-#diwali-offer .b5 {left:92%;top:62%;color:#fff1a1;animation-delay:1.6s;}
-
-@keyframes burst {
-  0% {transform:scale(.05);opacity:0;}
-  15% {opacity:1;}
-  65% {transform:scale(1.15);opacity:.9;}
-  100% {transform:scale(.3);opacity:0;}
+/* Glowing golden frame */
+#vs-diwali .poster:before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  z-index: -1;
+  border: 1px solid rgba(255,219,135,.8);
+  border-radius: 12px;
+  box-shadow: inset 0 0 28px rgba(255,190,73,.14);
+  pointer-events: none;
 }
 
-/* Animated rockets */
-#diwali-offer .rocket {
-  position:absolute;
-  bottom:-30px;
-  left:24%;
-  font-size:23px;
-  animation:rocketFly 4s ease-in infinite;
-  filter:drop-shadow(0 0 7px #ffca58);
-}
-#diwali-offer .r2 {
-  left:75%;
-  animation-delay:1.8s;
-  animation-duration:4.5s;
-}
-#diwali-offer .r3 {
-  left:48%;
-  animation-delay:2.8s;
-  animation-duration:3.8s;
-}
-@keyframes rocketFly {
-  0% {transform:translateY(0) rotate(-35deg);opacity:0;}
-  10% {opacity:1;}
-  75% {opacity:1;}
-  100% {transform:translateY(-430px) rotate(-35deg);opacity:0;}
+/* Festive sky */
+#vs-diwali .sky {
+  position: absolute;
+  inset: 0 0 42% 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(180deg,rgba(8,17,61,.25),transparent);
 }
 
-/* Small twinkling stars */
-#diwali-offer .star {
-  position:absolute;
-  color:#fff1a3;
-  font-size:21px;
-  animation:twinkle 1.5s ease-in-out infinite alternate;
+/* Firework trails */
+#vs-diwali .firework {
+  position: absolute;
+  bottom: 0;
+  left: var(--x);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff6c4;
+  box-shadow: 0 0 9px 3px #ffdc72;
+  animation: vsRocket var(--duration) ease-out infinite;
+  animation-delay: var(--delay);
 }
-#diwali-offer .s1 {top:21%;left:5%;}
-#diwali-offer .s2 {top:45%;right:5%;animation-delay:.5s;}
-#diwali-offer .s3 {bottom:20%;left:16%;animation-delay:1s;}
-#diwali-offer .s4 {bottom:18%;right:17%;animation-delay:.7s;}
-@keyframes twinkle {
-  from {opacity:.25;transform:scale(.65) rotate(0deg);}
-  to {opacity:1;transform:scale(1.2) rotate(25deg);}
-}
-
-/* Decorative light strings */
-#diwali-offer .lights {
-  display:flex;
-  justify-content:space-around;
-  gap:8px;
-  border-top:2px solid #f5d18d;
-  margin:0 5px 18px;
-}
-#diwali-offer .light {
-  width:10px;
-  height:15px;
-  margin-top:-2px;
-  border-radius:50%;
-  background:#fff3a5;
-  box-shadow:0 0 8px #ffdf58,0 0 18px #ffb42e;
-  animation:lightBlink 1s ease-in-out infinite alternate;
-}
-#diwali-offer .light:nth-child(3n) {
-  background:#ff7cba;
-  box-shadow:0 0 10px #ff53a5;
-  animation-delay:.5s;
-}
-#diwali-offer .light:nth-child(2n) {animation-delay:.8s;}
-@keyframes lightBlink {
-  from {opacity:.45;}
-  to {opacity:1;}
-}
-
-/* Heading */
-#diwali-offer .eyebrow {
-  margin:0 0 7px;
-  color:#ffe8a1;
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:3px;
-}
-#diwali-offer .heading {
-  margin:0;
-  color:#ffdb75;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(30px,5vw,46px);
-  line-height:1.15;
-  text-shadow:0 0 16px #ffbb4c;
-  animation:titleGlow 2s ease-in-out infinite alternate;
-}
-@keyframes titleGlow {
-  from {text-shadow:0 0 6px #ffbc4c;}
-  to {text-shadow:0 0 23px #ffbc4c,0 0 35px #ffdf8a;}
-}
-#diwali-offer .intro {
-  margin:9px 0 18px;
-  font-size:14px;
-}
-
-/* Deity images */
-#diwali-offer .offer-layout {
-  display:grid;
-  grid-template-columns:minmax(70px,1fr) minmax(220px,2.5fr) minmax(70px,1fr);
-  align-items:center;
-  gap:14px;
-  max-width:850px;
-  margin:auto;
-}
-#diwali-offer .deity {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-width:0;
-  min-height:135px;
-}
-#diwali-offer .deity img {
-  display:block;
-  width:100%;
-  max-width:150px;
-  height:150px;
-  object-fit:contain;
-  border-radius:10px;
-  filter:drop-shadow(0 0 12px #ffce70a8);
-  animation:deityFloat 3s ease-in-out infinite;
-}
-#diwali-offer .deity:last-child img {animation-delay:1s;}
-@keyframes deityFloat {
-  0%,100% {transform:translateY(0);}
-  50% {transform:translateY(-6px);}
-}
-#diwali-offer .deity-fallback {
-  display:none;
-  font-size:62px;
-  filter:drop-shadow(0 0 12px #ffce70);
-}
-
-/* Offer box */
-#diwali-offer .offer-box {
-  padding:20px 12px;
-  border:2px solid #fff0ae;
-  border-radius:16px;
-  background:linear-gradient(145deg,#fff6d5,#ffd45d 53%,#fff0b0);
-  color:#70113d;
-  box-shadow:0 0 0 5px #ffdf721f,0 0 25px #ffbd4c55;
-  animation:offerPulse 2.5s ease-in-out infinite;
-}
-@keyframes offerPulse {
-  0%,100% {box-shadow:0 0 0 3px #ffdf7218,0 0 16px #ffbd4c40;}
-  50% {box-shadow:0 0 0 6px #ffdf7238,0 0 30px #ffbd4c88;}
-}
-#diwali-offer .offer-kicker {
-  margin:0 0 10px;
-  color:#8b2251;
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:2px;
-}
-#diwali-offer .offer-text {
-  margin:0;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(20px,3vw,31px);
-  font-weight:700;
-  line-height:1.45;
-}
-#diwali-offer .offer-text strong {color:#70113d;}
-#diwali-offer .gift {
-  display:inline-block;
-  margin-top:12px;
-  padding:8px 12px;
-  border-radius:25px;
-  background:#70113d;
-  color:#fff4cf;
-  font-size:13px;
-  font-weight:800;
-}
-
-/* Dates and branding */
-#diwali-offer .date {
-  margin:19px 0 8px;
-  color:#ffe7a6;
-  font-size:14px;
-  font-weight:800;
-  line-height:1.6;
-}
-#diwali-offer .lamps {
-  margin:8px 0;
-  font-size:28px;
-  letter-spacing:8px;
-}
-#diwali-offer .brand {
-  margin:9px 0 4px;
-  color:#ffdc78;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(21px,3vw,28px);
-  font-weight:700;
-}
-#diwali-offer .tagline {
-  margin:5px 0 0;
-  color:#fff1d0;
-  font-size:12px;
-  line-height:1.8;
-}
-
-/* Mobile layout */
-@media(max-width:560px) {
-  #diwali-offer {padding:0 5px;margin:14px auto;}
-  #diwali-offer .banner {padding:17px 9px;border-radius:15px;}
-  #diwali-offer .lights {gap:4px;margin-bottom:15px;}
-  #diwali-offer .light {width:7px;height:11px;}
-  #diwali-offer .offer-layout {
-    grid-template-columns:minmax(0,.8fr) minmax(0,2.2fr) minmax(0,.8fr);
-    gap:5px;
+@keyframes vsRocket {
+  0% {
+    transform: translate(0,0) scale(.5);
+    opacity: 0;
   }
-  #diwali-offer .deity {min-height:85px;}
-  #diwali-offer .deity img {height:90px;}
-  #diwali-offer .deity-fallback {font-size:38px;}
-  #diwali-offer .offer-box {padding:16px 6px 13px;}
-  #diwali-offer .offer-kicker {font-size:8px;letter-spacing:.7px;}
-  #diwali-offer .offer-text {font-size:clamp(16px,4.4vw,23px);}
-  #diwali-offer .gift {font-size:10px;padding:6px 5px;}
-  #diwali-offer .intro {font-size:12px;}
-  #diwali-offer .date {font-size:12px;}
-  #diwali-offer .lamps {font-size:23px;letter-spacing:4px;}
-  #diwali-offer .rocket {font-size:17px;}
+  8% { opacity: 1; }
+  58% {
+    transform: translate(var(--drift),-280px) scale(1);
+    opacity: 1;
+  }
+  60%,100% {
+    transform: translate(var(--drift),-280px) scale(.5);
+    opacity: 0;
+  }
 }
 
+/* Firework explosions */
+#vs-diwali .explosion {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color);
+  box-shadow:
+    0 -10px 0 -1px var(--color),
+    0 -22px 0 -1px var(--color),
+    0 -34px 0 -1px var(--color),
+    0 10px 0 -1px var(--color),
+    0 22px 0 -1px var(--color),
+    0 34px 0 -1px var(--color),
+    10px 0 0 -1px var(--color),
+    22px 0 0 -1px var(--color),
+    34px 0 0 -1px var(--color),
+    -10px 0 0 -1px var(--color),
+    -22px 0 0 -1px var(--color),
+    -34px 0 0 -1px var(--color),
+    8px 8px 0 -1px var(--color),
+    16px 16px 0 -1px var(--color),
+    -8px 8px 0 -1px var(--color),
+    -16px 16px 0 -1px var(--color),
+    8px -8px 0 -1px var(--color),
+    16px -16px 0 -1px var(--color),
+    -8px -8px 0 -1px var(--color),
+    -16px -16px 0 -1px var(--color);
+  animation: vsBurst 2.8s ease-out infinite;
+  animation-delay: var(--delay);
+}
+@keyframes vsBurst {
+  0% { transform: scale(.08); opacity: 0; }
+  15% { opacity: 1; }
+  75% { transform: scale(1.3); opacity: .9; }
+  100% { transform: scale(.3); opacity: 0; }
+}
+
+/* Glitter */
+#vs-diwali .glitter {
+  position: absolute;
+  color: #ffe9a1;
+  animation: vsGlitter 1.6s ease-in-out infinite alternate;
+}
+@keyframes vsGlitter {
+  from { opacity: .2; transform: scale(.6) rotate(0); }
+  to { opacity: 1; transform: scale(1.3) rotate(35deg); }
+}
+
+/* String lights */
+#vs-diwali .string {
+  display: flex;
+  justify-content: space-around;
+  border-top: 2px solid rgba(255,223,152,.85);
+  margin: 0 2px 23px;
+}
+#vs-diwali .bulb {
+  width: 10px;
+  height: 14px;
+  margin-top: -2px;
+  border-radius: 50%;
+  background: #ffe9a1;
+  box-shadow: 0 0 9px #ffd76b,0 0 20px #ffb72f;
+  animation: vsBulb 1.2s infinite alternate;
+}
+#vs-diwali .bulb:nth-child(3n) {
+  background: #ff88b7;
+  box-shadow: 0 0 12px #ff4f9d;
+  animation-delay: .4s;
+}
+#vs-diwali .bulb:nth-child(2n) { animation-delay: .7s; }
+@keyframes vsBulb {
+  from { opacity: .55; }
+  to { opacity: 1; }
+}
+
+/* Brand logo */
+#vs-diwali .logo-wrap {
+  width: 112px;
+  height: 112px;
+  margin: 8px auto 13px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid #ffdf83;
+  background: radial-gradient(circle,#fff8dc,#e5b85c);
+  box-shadow: 0 0 12px #ffdf83,0 0 30px #ffb52f;
+  animation: vsLogoGlow 2s ease-in-out infinite alternate;
+}
+#vs-diwali .logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+@keyframes vsLogoGlow {
+  from { box-shadow: 0 0 10px #ffdf83; }
+  to { box-shadow: 0 0 25px #ffdf83,0 0 40px #ffb52f; }
+}
+
+#vs-diwali .brand {
+  margin: 0;
+  color: #ffdc79;
+  font-size: clamp(24px,4.5vw,39px);
+  font-weight: bold;
+  line-height: 1.15;
+  text-shadow: 0 2px 3px #3b091b,0 0 15px #ffbb4c;
+}
+#vs-diwali .quote {
+  max-width: 560px;
+  margin: 12px auto 19px;
+  color: #fff4d8;
+  font-family: Georgia,"Times New Roman",serif;
+  font-size: clamp(14px,2.4vw,19px);
+  font-style: italic;
+  line-height: 1.6;
+  text-shadow: 0 2px 5px #22091b;
+}
+
+/* Decorative sale plaque */
+#vs-diwali .plaque {
+  position: relative;
+  max-width: 560px;
+  margin: 0 auto 18px;
+  padding: 21px 14px 23px;
+  border: 3px solid #ffe19a;
+  border-radius: 25px;
+  background:
+    radial-gradient(ellipse at top,#a73545,#72142f 65%,#42102b);
+  box-shadow:
+    0 0 0 4px rgba(255,203,85,.17),
+    inset 0 0 25px rgba(255,203,85,.2),
+    0 8px 28px rgba(0,0,0,.35);
+}
+#vs-diwali .plaque:before {
+  content: "✦";
+  position: absolute;
+  top: -19px;
+  left: calc(50% - 15px);
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid #ffdf83;
+  background: #7c1939;
+  color: #ffe6a0;
+  font-size: 18px;
+}
+#vs-diwali .sale-label {
+  margin: 0 0 9px;
+  color: #ffdc83;
+  font-family: Arial,sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+#vs-diwali .sale-title {
+  margin: 0;
+  color: #fff0b0;
+  font-size: clamp(29px,6vw,53px);
+  line-height: 1.08;
+  font-weight: 900;
+  text-shadow:
+    1px 2px 0 #9e5222,
+    0 0 13px #ffcd57;
+}
+#vs-diwali .sale-subtitle {
+  margin: 10px 0 0;
+  color: #fff6dc;
+  font-size: 15px;
+  font-family: Arial,sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Offer */
+#vs-diwali .offer {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 19px 15px;
+  border: 2px solid #ffe6a2;
+  border-radius: 15px;
+  background: linear-gradient(135deg,#fff6d8,#f7cb62,#fff0b2);
+  color: #701339;
+  box-shadow: 0 0 23px #ffcf61a0;
+  animation: vsOfferPulse 2.5s ease-in-out infinite;
+}
+@keyframes vsOfferPulse {
+  0%,100% { box-shadow: 0 0 15px #ffcf6166; }
+  50% { box-shadow: 0 0 30px #ffcf61cc; }
+}
+#vs-diwali .offer-heading {
+  margin: 0 0 10px;
+  font-family: Arial,sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+#vs-diwali .offer-main {
+  margin: 0;
+  font-size: clamp(21px,4vw,31px);
+  font-weight: bold;
+  line-height: 1.4;
+}
+#vs-diwali .coin-line {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 13px;
+  border-radius: 25px;
+  background: #71133b;
+  color: #fff1c4;
+  font-family: Arial,sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Dates and footer */
+#vs-diwali .validity {
+  margin: 20px 0 10px;
+  padding: 10px 12px;
+  display: inline-block;
+  border: 1px solid #ffe1a0;
+  border-radius: 30px;
+  background: rgba(31,8,40,.58);
+  color: #ffebae;
+  font-family: Arial,sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+#vs-diwali .diyas {
+  margin: 8px 0;
+  font-family: Arial,sans-serif;
+  font-size: 27px;
+  letter-spacing: 8px;
+  filter: drop-shadow(0 0 8px #ffc34f);
+}
+#vs-diwali .footer {
+  margin: 12px 0 0;
+  color: #fff0cf;
+  font-family: Arial,sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+  text-shadow: 0 2px 5px #27091b;
+}
+#vs-diwali .footer strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #ffdc79;
+  font-family: Georgia,"Times New Roman",serif;
+  font-size: 18px;
+}
+
+/* Mobile */
+@media(max-width:560px) {
+  #vs-diwali { padding: 0 4px; margin: 12px auto; }
+  #vs-diwali .poster { min-height: 680px; padding: 19px 10px; }
+  #vs-diwali .string { margin-bottom: 20px; }
+  #vs-diwali .bulb { width: 7px; height: 11px; }
+  #vs-diwali .logo-wrap { width: 88px; height: 88px; }
+  #vs-diwali .quote { margin: 10px auto 16px; }
+  #vs-diwali .plaque { padding: 19px 8px; }
+  #vs-diwali .sale-label { font-size: 10px; letter-spacing: 2px; }
+  #vs-diwali .sale-title { font-size: clamp(28px,8vw,43px); }
+  #vs-diwali .sale-subtitle { font-size: 12px; }
+  #vs-diwali .offer { padding: 16px 8px; }
+  #vs-diwali .offer-heading { font-size: 10px; letter-spacing: 1.5px; }
+  #vs-diwali .offer-main { font-size: clamp(20px,5.5vw,28px); }
+  #vs-diwali .coin-line { font-size: 11px; }
+  #vs-diwali .validity { font-size: 12px; }
+  #vs-diwali .explosion { transform-origin:center; }
+}
 @media(prefers-reduced-motion:reduce) {
-  #diwali-offer *,
-  #diwali-offer *::before,
-  #diwali-offer *::after {animation:none!important;}
+  #vs-diwali * { animation:none!important; }
 }
 </style>
 
-<section class="banner" aria-label="Diwali gold and silver offer">
+<section class="poster" aria-label="Venkata Sai Diwali jewellery offer">
+
   <div class="sky" aria-hidden="true">
-    <span class="burst b1"></span>
-    <span class="burst b2"></span>
-    <span class="burst b3"></span>
-    <span class="burst b4"></span>
-    <span class="burst b5"></span>
+    <span class="explosion" style="--x:14%;--y:18%;--color:#ffe89a;--delay:0s"></span>
+    <span class="explosion" style="--x:83%;--y:23%;--color:#ff8fbd;--delay:1s"></span>
+    <span class="explosion" style="--x:54%;--y:10%;--color:#83f6ff;--delay:1.8s"></span>
+    <span class="explosion" style="--x:34%;--y:34%;--color:#ffcb70;--delay:2.3s"></span>
+    <span class="explosion" style="--x:94%;--y:46%;--color:#fff0a2;--delay:.6s"></span>
 
-    <span class="rocket">🚀</span>
-    <span class="rocket r2">🚀</span>
-    <span class="rocket r3">🎆</span>
+    <span class="firework" style="--x:20%;--drift:35px;--duration:3.3s;--delay:0s"></span>
+    <span class="firework" style="--x:72%;--drift:-30px;--duration:4s;--delay:1.3s"></span>
+    <span class="firework" style="--x:43%;--drift:20px;--duration:3.8s;--delay:2s"></span>
 
-    <span class="star s1">✦</span>
-    <span class="star s2">✧</span>
-    <span class="star s3">✦</span>
-    <span class="star s4">✧</span>
+    <span class="glitter" style="left:8%;top:45%">✧</span>
+    <span class="glitter" style="right:8%;top:50%;animation-delay:.8s">✦</span>
+    <span class="glitter" style="left:60%;top:30%;animation-delay:1.2s">✧</span>
   </div>
 
-  <div class="lights" aria-hidden="true">
-    <span class="light"></span><span class="light"></span>
-    <span class="light"></span><span class="light"></span>
-    <span class="light"></span><span class="light"></span>
-    <span class="light"></span><span class="light"></span>
-    <span class="light"></span><span class="light"></span>
-    <span class="light"></span><span class="light"></span>
-    <span class="light"></span><span class="light"></span>
+  <div class="string" aria-hidden="true">
+    <span class="bulb"></span><span class="bulb"></span>
+    <span class="bulb"></span><span class="bulb"></span>
+    <span class="bulb"></span><span class="bulb"></span>
+    <span class="bulb"></span><span class="bulb"></span>
+    <span class="bulb"></span><span class="bulb"></span>
+    <span class="bulb"></span><span class="bulb"></span>
+    <span class="bulb"></span><span class="bulb"></span>
   </div>
 
-  <p class="eyebrow">✨ FESTIVAL OF LIGHTS ✨</p>
-  <h2 class="heading">Diwali Offers live now!</h2>
-  <p class="intro">Celebrate the festive season with a special jewellery gift</p>
-
-  <div class="offer-layout">
-    <div class="deity">
-      <img
-        src="https://commons.wikimedia.org/wiki/Special:FilePath/Ganesha%20with%20his%20consorts%20Riddhi%20and%20Siddhi.jpg"
-        alt="Lord Ganesha"
-        loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
-      />
-      <span class="deity-fallback" aria-hidden="true">🙏</span>
-    </div>
-
-    <div class="offer-box">
-      <p class="offer-kicker">A SPECIAL FESTIVE GIFT</p>
-      <p class="offer-text">
-        Buy <strong>4 Grams of Gold</strong><br>
-        Get <strong>2 Free Silver Coins</strong>
-      </p>
-      <div class="gift">🎁 1 Gram Each · 2 Coins Free</div>
-    </div>
-
-    <div class="deity">
-      <img
-        src="https://commons.wikimedia.org/wiki/Special:FilePath/Lakshmi%20Devi.jpg"
-        alt="Goddess Lakshmi"
-        loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
-      />
-      <span class="deity-fallback" aria-hidden="true">🪷</span>
-    </div>
+  <!-- Your existing shop logo -->
+  <div class="logo-wrap">
+    <img
+      class="logo"
+      src="/Venkata-Sai/assets/logo.png"
+      alt="Venkata Sai logo"
+      onerror="this.style.display='none';this.parentElement.innerHTML='<span style=&quot;color:#701339;font-weight:bold;font-size:17px;line-height:1.25&quot;>VENKATA<br>SAI</span>';"
+    />
   </div>
 
-  <div class="date">🗓 Offer Valid: 25 October 2026 – 9 November 2026</div>
-  <div class="lamps" aria-hidden="true">🪔 ✨ 🪔 ✨ 🪔</div>
+  <h1 class="brand">Venkata Sai Gold &amp; Silvers</h1>
 
-  <div class="brand">Venkata Sai Gold &amp; Silvers</div>
-  <p class="tagline">
-    Pure Gold &amp; Silver · Hallmarked Jewellery<br>
+  <p class="quote">
+    “This Diwali, add more value to your jewellery purchase.”
+  </p>
+
+  <div class="plaque">
+    <p class="sale-label">✨ FESTIVE DHAMAKA ✨</p>
+    <h2 class="sale-title">DIWALI<br>GOLD &amp; SILVER<br>OFFER</h2>
+    <p class="sale-subtitle">LIGHT UP YOUR CELEBRATION</p>
+  </div>
+
+  <div class="offer">
+    <p class="offer-heading">A SPECIAL FESTIVE GIFT</p>
+    <p class="offer-main">
+      Buy 4 Grams of Gold<br>
+      Get 2 Silver Coins FREE
+    </p>
+    <span class="coin-line">2 Coins · 1 Gram Each</span>
+  </div>
+
+  <div class="validity">
+    🗓 OFFER VALID<br>
+    25 October 2026 – 9 November 2026
+  </div>
+
+  <div class="diyas" aria-hidden="true">🪔 ✨ 🪔 ✨ 🪔</div>
+
+  <p class="footer">
+    <strong>Pure Gold &amp; Silver · Hallmarked Jewellery</strong>
     Trusted Since Generations
   </p>
 </section>
-
-<script>
-(function () {
-  const root = document.getElementById("diwali-offer");
-  if (!root) return;
-
-  /* Use a local CSS fallback symbol if a remote image cannot load. */
-  root.querySelectorAll(".deity img").forEach(function (img) {
-    img.addEventListener("error", function () {
-      img.style.display = "none";
-      const fallback = img.nextElementSibling;
-      if (fallback) fallback.style.display = "block";
-    }, { once: true });
-  });
-})();
-</script>
 </div>
 <!-- ===== DIWALI OFFER BANNER: END ===== -->
 
